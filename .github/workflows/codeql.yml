@@ -33,6 +33,10 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
+      - if: ${{ contains(matrix.language, 'java-kotlin') }}
+        name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
